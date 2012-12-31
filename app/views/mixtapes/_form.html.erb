@@ -1,0 +1,45 @@
+<%= form_for @mixtape, :html => { :class => 'form-horizontal' } do |f| %>
+  <% if @mixtape.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mixtape.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @mixtape.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :link, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :link, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "Created", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :dateAdded, :class => 'date_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "Artist", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select :artist_id, Artist.all, :id, :name , :class => 'dropdown-menu' %>
+      <%= link_to "New Artist", new_artist_path, :class => 'btn btn-danger' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                mixtapes_path, :class => 'btn' %>
+  </div>
+<% end %>

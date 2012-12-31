@@ -1,0 +1,24 @@
+<%- model_class = Mixtape -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @mixtape.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name('Views') %>:</strong></dt>
+  <dd><%= @mixtape.downloads %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:link) %>:</strong></dt>
+  <dd><%= link_to @mixtape.link, @mixtape.url_with_protocol(@mixtape.link), :class => 'btn btn-success'  %></dd>
+  <dt><strong><%= model_class.human_attribute_name('Created') %>:</strong></dt>
+  <dd><%= @mixtape.dateAdded %></dd>
+  <dt><strong><%= model_class.human_attribute_name('Artist') %>:</strong></dt>
+  <dd><%= @mixtape.artist.name %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              mixtapes_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_mixtape_path(@mixtape), :class => 'btn' %>
+</div>

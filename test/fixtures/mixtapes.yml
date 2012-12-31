@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  downloads: 1
+  link: MyString
+  dateAdded: 2012-11-19
+
+two:
+  name: MyString
+  downloads: 1
+  link: MyString
+  dateAdded: 2012-11-19

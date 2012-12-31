@@ -1,0 +1,27 @@
+<%- model_class = Artist -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @artist.name %></dd>
+</dl>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:mixtapes) %>:</strong></dt>
+  <dd>
+    <ul>
+    <% @artist.mixtapes.sorted.each do |mix| %>
+    <li><%= link_to mix.name, mixtape_path(mix), :class => 'btn btn-link' %> </li>
+    <% end %>
+  </ul>
+  </dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              artists_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_artist_path(@artist), :class => 'btn' %>
+</div>

@@ -1,0 +1,40 @@
+
+ <h2>Welcome to Datspleef!</h2> 
+ 
+ <h5>It's kind of like <a href="http://www.datpiff.com"> Datpiff</a></h5>
+ 
+ <p>
+ 	Our website is a convenient way to share and listen to mixtapes. Users can add artists, and then add those artists' mixtapes. 
+ 	When looking at the list of artists, clicking "See Artist" shows all of that artist's mixtapes.
+ 	Lists of mixtapes are always sorted by their number of listens.
+ </p>
+ <p>
+			<a href="#" id="show" class="styledArtwork">Show Artwork</a>
+			<a href="#" id="hide" class="styledArtwork">Hide Artwork</a>
+</p>
+
+<div id="artwork">
+     <img src="http://joshhaley.com/wp-content/uploads/2008/12/funny-pictures-cat-headphones-god.jpg">  </div>
+ <h3> Merry Listening! </h3>
+ 
+
+ 
+<p><small>Site brought to you by Josh Margolis, Max Epelbaum, and Scott Gehlot</small></p>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+	  $('#artwork').hide();
+	  
+	  $('#show').click(function() {
+	    $('#artwork').slideDown('slow');
+	    return false;
+	  });
+
+	  $('#hide').click(function() {
+	    $('#artwork').slideUp('slow');
+	    return false;
+	  });
+
+	});
+</script>

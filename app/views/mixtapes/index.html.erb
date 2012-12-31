@@ -1,0 +1,35 @@
+<%- model_class = Mixtape -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name("Listens") %></th>
+      <th><%= model_class.human_attribute_name(:link) %></th>
+      <th><%= model_class.human_attribute_name("Created") %></th>
+      <th><%= model_class.human_attribute_name("Artist") %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @mixtapes.each do |mixtape| %>
+      <tr>
+        <td><%= mixtape.name %></td>
+        <td><%= mixtape.downloads %></td>
+        <td><%= link_to 'Listen Here', mixtape_path(mixtape), :class => 'btn btn-success' %></td>
+        <td><%= mixtape.dateAdded %></td>
+        <td><%= mixtape.artist.name %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_mixtape_path(mixtape), :class => 'btn btn-mini' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_mixtape_path,
+            :class => 'btn btn-primary' %>
